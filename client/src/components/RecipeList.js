@@ -26,17 +26,27 @@ const RecipeList = ({ recipes, updateRecipes }) => {
             <div key={i} className='flex flex-col justify-center w-1/2 p-5'>
                 <h2 className='text-3xl text-sky-950 font-bold mb-3'>Recipe {i+1}</h2>
                 <ol>
-                    <li><span className='text-sky-950 font-bold'>Title:</span> {recipe.title}</li>
-                    <li><span className='text-sky-950 font-bold'>Ingredients:</span></li>
-                    <li>{recipe.ingredients}</li>
-                    <div className='flex flex-row gap-10 m-3'>
-                        <input
-                            type="checkbox"
-                            id="default-checkbox"
-                            checked={recipe.tried}
-                            onChange={() => toggleTried(recipe)}
-                            className='w-4 h-4 bg-sky-400 border-sky-300 rounded focus:ring-blue-500 focus:ring-2'
-                        />{' '}
+                    <li className={`${recipe.tried ? 'line-through' : ''}`}>
+                        <span className='text-sky-950 font-bold'>Title:</span>
+                         {recipe.title}
+                    </li>
+                    <li className={`${recipe.tried ? 'line-through' : ''}`}>
+                        <span className='text-sky-950 font-bold'>Ingredients:</span>
+                    </li>
+                    
+                    <li className={`${recipe.tried ? 'line-through' : ''}`}>
+                        {recipe.ingredients}
+                    </li>
+                    <div className='flex items-center gap-10 m-3'>
+                        <div className='flex items-center gap-2'>
+                            <label className='text-sky-950 font-bold'>Tried:</label>
+                            <input
+                                type="checkbox"
+                                checked={recipe.tried}
+                                onChange={() => toggleTried(recipe)}
+                                className='w-4 h-4 bg-sky-400 border-sky-300 rounded focus:ring-blue-500 focus:ring-2'
+                            />{' '}
+                        </div>
                         <svg
                             onClick={event => deleteRecipe(event, recipe)}
                             width="16"

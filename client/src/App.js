@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { recipes } from './redux/actions';
 // import './App.css';
 import RecipeList from './components/RecipeList';
 import "./index.css";
 
-const App = ({ allRecipes }) => {
+const App = () => {
   const [newRecipeTitle, setNewRecipeTitle] = useState("");
   const [newRecipeIngredients, setNewRecipeIngredients] = useState("");
   
@@ -44,7 +44,7 @@ const App = ({ allRecipes }) => {
     <div className='bg-sky-700 min-h-screen h-fit pb-5'>
       <h1 className='pt-5 text-center text-5xl font-bold text-cyan-400'>My Recipes</h1>
 
-      <RecipeList recipes={allRecipes} updateRecipes={getAllRecipes}/>
+      <RecipeList updateRecipes={getAllRecipes}/>
 
       <form className='flex flex-col justify-center items-center gap-4' onSubmit={addRecipe}>
         <input 
@@ -70,10 +70,11 @@ const App = ({ allRecipes }) => {
 
 // USE USESELECTOR INSTEAD OF CONNECT HERE 
 
-const mapStateToProps = state => ({
-  allRecipes: state.allRecipes
-});
+// const mapStateToProps = state => ({
+//   allRecipes: state.allRecipes
+// });
 
-export default connect(
-  mapStateToProps
-)(App);
+// export default connect(
+//   mapStateToProps
+// )(App);
+export default App;

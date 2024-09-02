@@ -1,6 +1,8 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-const RecipeList = ({ recipes, updateRecipes }) => {
+const RecipeList = ({ updateRecipes }) => {
+    const allRecipes = useSelector((state) => state.allRecipes)
 
     const deleteRecipe = (event, recipe) => {
         event.preventDefault();
@@ -22,7 +24,7 @@ const RecipeList = ({ recipes, updateRecipes }) => {
     
     return (
         <div className='m-8 flex flex-col items-center'>            
-            {recipes.map((recipe, i) => (
+            {allRecipes.map((recipe, i) => (
             <div key={i} className='flex flex-col justify-center w-1/2 p-5'>
                 <h2 className='text-3xl text-sky-950 font-bold mb-3'>Recipe {i+1}</h2>
                 <ol>
